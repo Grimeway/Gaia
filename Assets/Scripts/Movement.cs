@@ -46,10 +46,12 @@ public class Movement : MonoBehaviour
         MovePlayer(); 
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// here the data for the player's inventory is being saved. But also the player movement. 
+    /// </summary>
     void Update()
     {
-
+        
         if (Input.GetMouseButtonDown(0))
         {
             FireRay();
@@ -70,38 +72,28 @@ public class Movement : MonoBehaviour
             }
         }
 
-        // ground check
+        // Check if player is touching the ground.
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.2f, whatIsGround);
 
         MyInput();
 
-        // handle drag
+        // handle drag so the player doesnt slide all over the map.
         if (grounded) 
             rb.drag = groundDrag;
         else
             rb.drag = 0;
-
-        RaycastHit hitInfo; 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (Physics.Raycast(orientation.position, Vector3.forward, out hitInfo, 1f))
-            {
-                Debug.DrawRay(orientation.position, Vector3.forward, Color.green);
-                Debug.Log(hitInfo.collider.gameObject.name);
-            }
-        }
-        
-
     }
 
+    /// <summary>
+    /// Raycasting from player position to interact with 'mineable' objects. 
+    /// </summary>
     void FireRay()
     {
         Ray ray = new Ray(orientation.position, transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * 10);
         Physics.Raycast(ray, out hitData);
-        Debug.Log(hitData.collider.gameObject.name);
     }
 
+    // input variables for the movement.
     private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");

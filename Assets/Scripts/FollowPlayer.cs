@@ -6,11 +6,6 @@ public class FollowPlayer : MonoBehaviour
 {
     public Transform player;
 
-    void start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
