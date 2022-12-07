@@ -9,6 +9,9 @@ public class MaterialGather : MonoBehaviour
 
     public GameObject brokenOrePrefab;
 
+    /// <summary>
+    /// Universal script to destroy the 'mineable' gameobjects using a counter and raycasting.
+    /// </summary>
     void HitByRay()
     {
         hitCount += 1;
@@ -25,10 +28,7 @@ public class MaterialGather : MonoBehaviour
         if (hitCount == 5 && (gameObject.name == "PT_Ore_Rock_01"))
         {
             GameObject brokenOre = Instantiate(brokenOrePrefab, transform.position, transform.rotation);
-            Debug.Log("doet die iets?");
-            brokenOre.name = "waaromdoetdiehetniet?";
             Destroy(gameObject);
-            Debug.Log("hier wel? ");
         }
     }
 

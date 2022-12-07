@@ -6,12 +6,9 @@ public class Orientation : MonoBehaviour
 {
     public Transform orientation;
 
-    void start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    /// <summary>
+    /// this function is used for the orientation of the player and the playercam. 
+    /// </summary>
     void Update()
     {
         transform.rotation = orientation.transform.rotation;
